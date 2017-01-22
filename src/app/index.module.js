@@ -1,4 +1,4 @@
-/* global malarkey:false, moment:false */
+/* global malarkey:false, moment:false, firebase:false */
 
 import { config } from './index.config';
 import { routerConfig } from './index.route';
@@ -12,6 +12,7 @@ import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive
 angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'toastr'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
+  .constant('Firebase', firebase)
   .config(config)
   .config(routerConfig)
   .run(runBlock)
