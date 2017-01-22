@@ -10,13 +10,13 @@ export function config ($logProvider, toastrConfig) {
   toastrConfig.preventDuplicates = true;
   toastrConfig.progressBar = true;
   
-  // var config = {
-  //   apiKey: "AIzaSyA9gpYbYauEwab83kfyvpXQ5fuSv-AmLLk",
-  //   authDomain: "negopartner.firebaseapp.com",
-  //   databaseURL: "https://negopartner.firebaseio.com",
-  //   storageBucket: "negopartner.appspot.com",
-  //   messagingSenderId: "600611749728"
-  // };
-  // firebase.initializeApp(config);
+  var config = {
+    apiKey: "AIzaSyA9gpYbYauEwab83kfyvpXQ5fuSv-AmLLk",
+    authDomain: "negopartner.firebaseapp.com",
+    databaseURL: "https://negopartner.firebaseio.com",
+    storageBucket: "negopartner.appspot.com",
+    messagingSenderId: "600611749728"
+  };
+  firebase.initializeApp(config);
   
 }
