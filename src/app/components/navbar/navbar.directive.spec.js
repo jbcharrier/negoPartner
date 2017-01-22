@@ -15,7 +15,7 @@ describe('directive navbar', function() {
     timeInMs = currentDate.setHours(currentDate.getHours() - 24);
 
     element = angular.element(`
-      <acme-navbar creation-date="${timeInMs}"></acme-navbar>
+      <navbar creation-date="${timeInMs}"></navbar>
     `);
 
     $compile(element)($rootScope.$new());

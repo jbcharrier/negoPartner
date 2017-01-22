@@ -24,6 +24,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <header>
+      <navbar></navbar>
+    </header>
     <div ui-view></div>
 
     <!-- build:js(src) scripts/vendor.js -->
@@ -34,6 +37,18 @@
 
     <!-- build:js({.tmp/serve,.tmp/partials}) scripts/app.js -->
     <!-- inject:js -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA9gpYbYauEwab83kfyvpXQ5fuSv-AmLLk",
+        authDomain: "negopartner.firebaseapp.com",
+        databaseURL: "https://negopartner.firebaseio.com",
+        storageBucket: "negopartner.appspot.com",
+        messagingSenderId: "600611749728"
+      };
+      firebase.initializeApp(config);
+    </script>
     <!-- js files will be automatically insert here -->
     <!-- endinject -->
 
