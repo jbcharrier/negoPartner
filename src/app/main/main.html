@@ -1,34 +1,43 @@
-<div layout="vertical" layout-fill>
+<md-content class="clientsList" layout="row">
 
-  <md-content>
-    <header>
-      <acme-navbar creation-date="main.creationDate"></acme-navbar>
-    </header>
+  <md-card flex="90">
+    <md-table-container ng-cloak layout-wrap>
+      <table md-table style="text: center">
+        <thead md-head>
+          <tr md-row>
+            <th md-column><span>Identifiant</span></th>
+            <th md-column><span>Entreprise</span></th>
+            <th md-column>Date de création</th>
+            <th md-column>Dernière mise à jour</th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row>
+            <td md-cell>Test</td>
+            <td md-cell>test</td>
+            <td md-cell>test</td>
+            <td md-cell>test</td>
 
-    <section class="jumbotron">
-      <h1>'Allo, 'Allo!</h1>
-      <p class="lead">
-        <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-        Always a pleasure scaffolding your apps.
-      </p>
-      <md-button class="md-raised animated infinite" ng-class="main.classAnimation" ng-click="main.showToastr()">Splendid Toastr</md-button>
-      <p>
-        With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
-      </p>
-    </section>
-
-    <div class="techs" layout-align="center">
-      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-        <md-card-content>
-          <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-          <h3 class="md-title">{{ awesomeThing.title }}</h3>
-          <p>{{ awesomeThing.description }}</p>
-        </md-card-content>
-        <div class="md-action-buttons">
-          <md-button ng-href="{{ awesomeThing.url }}">Website</md-button>
-        </div>
-      </md-card>
-    </div>
-  </md-content>
-
-</div>
+            <td md-cell>
+              <md-button class="md-icon-button md-primary" ng-click="deletePaymentMean($event,card)">
+                <md-icon class="material-icons themeBlue">delete</md-icon>
+                <md-tooltip md-direction="right">
+                  Supprimer
+                </md-tooltip>
+              </md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-card>
+  <section flex="10">
+    <md-button class="md-fab md-mini" aria-label="FAB" style="margin-top: 20px"
+               ui-sref="accountCreate">
+      <md-icon class="material-icons">add</md-icon>
+      <md-tooltip md-direction="top">
+        Ajouter un client
+      </md-tooltip>
+    </md-button>
+  </section>
+</md-content>

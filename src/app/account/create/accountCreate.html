@@ -1,0 +1,44 @@
+<md-content class="accountCreate" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80">
+    <h3 class="text-center">Créer un nouveau client</h3>
+    <form name="accountForm" ng-submit="saveAccount()">
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom du client*</label>
+        <input ng-model="account.name" required>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Addresse</label>
+        <input ng-model="account.address">
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Complément d'adresse</label>
+        <input ng-model="account.addressComplement">
+      </md-input-container>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Ville</label>
+          <input ng-model="account.city">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>CP</label>
+          <input name="postalCode" ng-model="account.postalCode" md-maxlength="5">
+        </md-input-container>
+      </div>
+
+      <md-input-container class="md-block">
+        <label>Complément</label>
+        <textarea ng-model="account.complement" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <div class="text-right" layout-wrap>
+        <md-button class="md-raised md-primary" type="submit">Créer</md-button>
+      </div>
+
+    </form>
+  </div>
+</md-content>

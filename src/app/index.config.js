@@ -11,11 +11,11 @@ export function config ($logProvider, toastrConfig) {
   toastrConfig.progressBar = true;
   
   var config = {
-    apiKey: "AIzaSyA9gpYbYauEwab83kfyvpXQ5fuSv-AmLLk",
-    authDomain: "negopartner.firebaseapp.com",
-    databaseURL: "https://negopartner.firebaseio.com",
-    storageBucket: "negopartner.appspot.com",
-    messagingSenderId: "600611749728"
+    apiKey: "AIzaSyDg41Sa3TqN0eZaUhb1GS7_McmACo8up1c",
+    authDomain: "negopartner-a1282.firebaseapp.com",
+    databaseURL: "https://negopartner-a1282.firebaseio.com",
+    storageBucket: "negopartner-a1282.appspot.com",
+    messagingSenderId: "1095092287889"
   };
   firebase.initializeApp(config);
   

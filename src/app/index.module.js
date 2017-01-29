@@ -10,8 +10,10 @@ import { NavbarDirective } from '../app/components/navbar/navbar.directive';
 import { MalarkeyDirective } from '../app/components/malarkey/malarkey.directive';
 import { LoginController } from '../app/login/loginCtrl';
 import { LoginFactory } from '../app/service/loginFactory';
+import { AccountFactory } from '../app/service/accountFactory';
+import { AccountCreateController } from '../app/account/create/accountCreateCtrl';
 
-angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'toastr'])
+angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'toastr', 'md.data.table'])
   .constant('malarkey', malarkey)
   .constant('moment', moment)
   .constant('firebase', firebase)
@@ -21,7 +23,9 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .service('User', LoginFactory)
+  .service('Account', AccountFactory)
   .controller('MainController', MainController)
   .controller('LoginController', LoginController)
+  .controller('AccountCreateController', AccountCreateController)
   .directive('navbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);
