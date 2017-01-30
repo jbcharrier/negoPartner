@@ -9,6 +9,7 @@ export class AccountCreateController {
     };
     
     $scope.saveAccount = function () {
+      $scope.account.creationDate = Date.now();
       Account.save($scope.account);
       $scope.reset();
     }
