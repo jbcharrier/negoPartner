@@ -11,6 +11,9 @@ import { AccountFactory } from '../app/service/accountFactory';
 import { AccountCreateController } from '../app/account/create/accountCreateCtrl';
 import { AccountDetailsController } from '../app/account/details/accountDetailsCtrl';
 import { AccountModifyController } from '../app/account/modify/accountModifyCtrl';
+import { SiteCreateController } from '../app/site/create/siteCreateCtrl';
+import { SiteDetailsController } from '../app/site/details/siteDetailsCtrl';
+import { SiteModifyController } from '../app/site/modify/siteModifyCtrl';
 
 angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'md.data.table'])
   .constant('moment', moment)
@@ -25,4 +28,7 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .controller('AccountCreateController', AccountCreateController)
   .controller('AccountDetailsController', AccountDetailsController)
   .controller('AccountModifyController', AccountModifyController)
+  .controller('SiteCreateController', SiteCreateController)
+  .controller('SiteDetailsController', SiteDetailsController)
+  .controller('SiteModifyController', SiteModifyController)
   .directive('navbar', NavbarDirective);

@@ -59,7 +59,47 @@
                 <p>Date d'enregistrement</p>
               </div>
             </div>
+            <md-divider></md-divider>
           </md-list-item>
+          <div layout="row">
+            <div layout="column" flex="50">
+              <div ng-repeat="site in account.sites" layout="row" layout-align="center center">
+                <md-list-item class="md-2-line" flex="60">
+                  <div class="material-icons md-avatar-icon">directions</div>
+                  <div class="md-list-item-text" layout="row">
+                    <div flex>
+                      <a ui-sref="siteDetails({id: site.id, accountId: account.id})"><h3>{{ site.name }}</h3></a>
+                      <p>Site {{$index +1}}</p>
+                    </div>
+                  </div>
+                </md-list-item>
+                <div flex="20">
+                  <md-button class="md-icon-button md-primary" ui-sref="siteModify({accountId: account.id, id: site.id})">
+                    <md-icon class="material-icons themeBlue">create</md-icon>
+                    <md-tooltip md-direction="right">
+                      Modifier ce site
+                    </md-tooltip>
+                  </md-button>
+                </div>
+                <div flex="20">
+                  <md-button class="md-icon-button md-primary" ng-click="deleteSite(site.id)">
+                    <md-icon class="material-icons themeBlue">delete</md-icon>
+                    <md-tooltip md-direction="right">
+                      Supprimer ce site
+                    </md-tooltip>
+                  </md-button>
+                </div>
+              </div>
+            </div>
+            <md-list-item class="md-2-line" flex="50">
+              <div class="md-list-item-text" layout="row" layout-align="center center">
+                <md-button class="md-primary md-raised"
+                           ui-sref="siteCreate({accountId: account.id})">
+                    Ajouter un site
+                </md-button>
+              </div>
+            </md-list-item>
+          </div>
         </div>
       </md-card>
     </section>

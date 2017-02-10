@@ -30,6 +30,27 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
           return Account.getAccount($stateParams.id);
         }
       }
+    })
+    .state('siteCreate', {
+      url: '/site/:accountId',
+      templateUrl: 'app/site/create/siteCreate.html',
+      controller: 'SiteCreateController',
+    })
+    .state('siteDetails', {
+      url: '/site/:id/details',
+      templateUrl: 'app/site/details/siteDetails.html',
+      controller: 'SiteDetailsController',
+      params:{
+        accountId: null
+      }
+    })
+    .state('siteModify', {
+      url: '/site/:id/modify',
+      templateUrl: 'app/site/modify/siteModify.html',
+      controller: 'SiteModifyController',
+      params:{
+        accountId: null
+      }
     });
 
   $urlRouterProvider.otherwise('/');

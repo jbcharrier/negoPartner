@@ -13,7 +13,8 @@ export class AccountFactory {
       city:'',
       postalCode:'',
       complement:'',
-      creationDate:''
+      creationDate:'',
+      sites: {}
     };
   }
   
@@ -46,7 +47,6 @@ export class AccountFactory {
   reset () {
   }
   
-  
   save (account) {
     this.firebase.database().ref('account').push(account).then(function (data) {
       data.update({id:data.key});
@@ -65,5 +65,36 @@ export class AccountFactory {
   
   update(account) {
     this.firebase.database().ref('account').child(account.id).update(account);
+  }
+  
+  saveSite (accountId, site) {
+    this.firebase.database().ref('account').child(accountId).child('sites').push(site).then(function (data) {
+      data.update({id:data.key});
+    })
+  }
+  
+  deleteSite(accountId, siteId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).remove().then(function () {
+      defer.resolve('success');
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  getSite(accountId, siteId){
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).once('value').then(function (data) {
+      var site = data.val();
+      defer.resolve(site);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  updateSite(accountId, siteId, site) {
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).update(site);
   }
 }
