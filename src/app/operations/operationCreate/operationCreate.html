@@ -1,0 +1,43 @@
+<md-content class="operationCreate" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80">
+    <h3 class="text-center">Ajouter une nouvelle opération</h3>
+    <form name="operationForm" ng-submit="createOperation(operation)" layout="column">
+
+      <section>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Nom de l'opération*</label>
+          <input ng-model="operation.name" required>
+        </md-input-container>
+      </section>
+
+        <md-input-container>
+          <label>Fréquence</label>
+          <md-select ng-model="operation.frequency" required>
+            <md-option><em></em></md-option>
+            <md-option ng-repeat="frequency in frequencies" ng-value="frequency">
+              {{frequency}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+      <section layout layout-align="center center" style="margin-top: 5%">
+        <div flex="50">
+          <label>Date de début</label>
+          <md-datepicker ng-model="test1" md-placeholder="Entrer une date" class="datepicker"></md-datepicker>
+        </div>
+
+        <div flex="50">
+          <label>Date de fin</label>
+          <md-datepicker ng-model="test2" md-placeholder="Entrer une date" class="datepicker"></md-datepicker>
+        </div>
+      </section>
+
+      <section style="margin-top: 5%">
+        <div class="text-right" layout layout-align="end center">
+          <md-button class="md-raised md-primary" type="submit">Ajouter</md-button>
+        </div>
+      </section>
+
+    </form>
+  </div>
+</md-content>

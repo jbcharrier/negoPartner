@@ -21,7 +21,7 @@ export class AccountFactory {
   getAccountsList () {
     let defer = this.$q.defer();
     this.firebase.database().ref('account').once('value').then(function (data) {
-      var accountList = data.val();
+      let accountList = data.val();
       defer.resolve(accountList);
     }, function (error) {
       defer.reject(error);
@@ -36,7 +36,7 @@ export class AccountFactory {
   getAccount (id) {
     let defer = this.$q.defer();
     this.firebase.database().ref('account').child(id).once('value').then(function (data) {
-      var account = data.val();
+      let account = data.val();
       defer.resolve(account);
     }, function (error) {
       defer.reject(error);
@@ -86,7 +86,7 @@ export class AccountFactory {
   getSite(accountId, siteId){
     let defer = this.$q.defer();
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).once('value').then(function (data) {
-      var site = data.val();
+      let site = data.val();
       defer.resolve(site);
     }, function (error) {
       defer.reject(error);
@@ -96,5 +96,49 @@ export class AccountFactory {
   
   updateSite(accountId, siteId, site) {
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).update(site);
+  }
+  
+  getAreasList (accountId, siteId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').once('value').then(function (data) {
+      let areasList = data.val();
+      defer.resolve(areasList);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  saveArea (accountId, siteId, area) {
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').push(area).then(function (data) {
+      data.update({id:data.key});
+    })
+  }
+  
+  deleteArea (accountId, siteId, areaId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).remove().then(function () {
+      defer.resolve('success');
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  getOperationsList (accountId, siteId, areaId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).child('operations').once('value').then(function (data) {
+      let operationsList = data.val();
+      defer.resolve(operationsList);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  saveOperation (accountId, siteId, areaId, operation) {
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).child('operations').push(operation).then(function (data) {
+      data.update({id:data.key});
+    })
   }
 }

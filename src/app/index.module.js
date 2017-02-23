@@ -14,8 +14,13 @@ import { AccountModifyController } from '../app/account/modify/accountModifyCtrl
 import { SiteCreateController } from '../app/site/create/siteCreateCtrl';
 import { SiteDetailsController } from '../app/site/details/siteDetailsCtrl';
 import { SiteModifyController } from '../app/site/modify/siteModifyCtrl';
+import { AreasListController } from '../app/areas/areasListCtrl';
+import { AreaCreateController } from '../app/areas/areaCreate/areaCreateCtrl';
+import { OperationsListController } from '../app/operations/operationsListCtrl';
+import { OperationCreateController } from '../app/operations/operationCreate/operationCreateCtrl';
+import { FrequencyService } from '../app/service/frequency/frequency-service';
 
-angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'md.data.table'])
+angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages', 'md.data.table'])
   .constant('moment', moment)
   .constant('firebase', firebase)
   .config(config)
@@ -23,6 +28,7 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .run(runBlock)
   .service('User', LoginFactory)
   .service('Account', AccountFactory)
+  .service('FrequencyService', FrequencyService)
   .controller('MainController', MainController)
   .controller('LoginController', LoginController)
   .controller('AccountCreateController', AccountCreateController)
@@ -31,4 +37,8 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .controller('SiteCreateController', SiteCreateController)
   .controller('SiteDetailsController', SiteDetailsController)
   .controller('SiteModifyController', SiteModifyController)
+  .controller('AreasListController', AreasListController)
+  .controller('AreaCreateController', AreaCreateController)
+  .controller('OperationsListController', OperationsListController)
+  .controller('OperationCreateController', OperationCreateController)
   .directive('navbar', NavbarDirective);

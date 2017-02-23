@@ -1,5 +1,5 @@
 export class LoginController {
-  constructor ($scope, $state, User) {
+  constructor ($scope, $state, $log, User) {
     'ngInject';
     
     $scope.user = User.getNewUser();
@@ -11,7 +11,7 @@ export class LoginController {
         }
         
       }, function (error) {
-        console.log("error", error);
+        $log.error(error);
       });
     }
     

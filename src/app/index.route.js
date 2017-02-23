@@ -4,22 +4,22 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
   .state('login', {
       url: '/login',
       templateUrl: 'app/login/login.html',
-      controller: 'LoginController',
+      controller: 'LoginController'
     })
     .state('home', {
       url: '/',
       templateUrl: 'app/main/main.html',
-      controller: 'MainController',
+      controller: 'MainController'
     })
     .state('accountCreate', {
     url: '/account',
     templateUrl: 'app/account/create/accountCreate.html',
-    controller: 'AccountCreateController',
+    controller: 'AccountCreateController'
     })
     .state('accountDetails', {
       url: '/account/:id',
       templateUrl: 'app/account/details/accountDetails.html',
-      controller: 'AccountDetailsController',
+      controller: 'AccountDetailsController'
     })
     .state('accountModify', {
       url: '/account/modify/:id',
@@ -34,7 +34,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
     .state('siteCreate', {
       url: '/site/:accountId',
       templateUrl: 'app/site/create/siteCreate.html',
-      controller: 'SiteCreateController',
+      controller: 'SiteCreateController'
     })
     .state('siteDetails', {
       url: '/site/:id/details',
@@ -50,6 +50,44 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'SiteModifyController',
       params:{
         accountId: null
+      }
+    })
+    .state('areasList', {
+      url: '/areas',
+      templateUrl: 'app/areas/areasList.html',
+      controller: 'AreasListController',
+      params:{
+        accountId: null,
+        siteId: null
+      }
+    })
+    .state('areaCreate', {
+      url: '/areas/create',
+      templateUrl: 'app/areas/areaCreate/areaCreate.html',
+      controller: 'AreaCreateController',
+      params:{
+        accountId: null,
+        siteId: null
+      }
+    })
+    .state('operationsList', {
+      url: '/operations',
+      templateUrl: 'app/operations/operationsList.html',
+      controller: 'OperationsListController',
+      params:{
+        accountId: null,
+        siteId: null,
+        areaId: null
+      }
+    })
+    .state('operationCreate', {
+      url: '/operation',
+      templateUrl: 'app/operations/operationCreate/operationCreate.html',
+      controller: 'OperationCreateController',
+      params:{
+        accountId: null,
+        siteId: null,
+        areaId: null
       }
     });
 

@@ -7,7 +7,7 @@ export function NavbarDirective() {
     scope: {
     },
     controller: NavbarController,
-    controllerAs: 'vm',
+    controllerAs: 'vm'
   };
 
   return directive;

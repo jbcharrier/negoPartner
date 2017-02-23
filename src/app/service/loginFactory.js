@@ -13,7 +13,7 @@ export class LoginFactory {
   
   getNewUser () {
     return this.user;
-  };
+  }
   
   signIn (email, password){
     let defer = this.$q.defer();
