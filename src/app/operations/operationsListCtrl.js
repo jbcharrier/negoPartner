@@ -8,6 +8,7 @@ export class OperationsListController {
 
     if ($scope.accountId && $scope.siteId && $scope.areaId) {
       Account.getOperationsList($scope.accountId, $scope.siteId, $scope.areaId).then(function (operations) {
+        console.log("operations", operations);
         $scope.operations = operations;
       })
     }

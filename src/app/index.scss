@@ -45,7 +45,10 @@
 }
 
 html {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Roboto', serif;
+  a:hover{
+    color: grey;
+  }
 }
 
 [layout=row] {

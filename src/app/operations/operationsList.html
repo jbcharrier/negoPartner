@@ -1,28 +1,29 @@
 <md-content class="operationsList" layout="column">
-  <section layout layout-align="center center">
-    <h4>Liste des operations</h4>
-  </section>
   <section layout>
-    <div layout="column" flex="90">
+    <md-card layout="column" flex="90">
       <md-table-container>
         <table md-table>
           <thead md-head>
             <tr md-row>
-              <th md-column>Id de l'opération</th>
+              <th md-column>Création de l'opération</th>
               <th md-column>Nom de l'opération</th>
+              <th md-column>Début</th>
+              <th md-column>Fin</th>
               <th md-column>Fréquence de l'opération</th>
             </tr>
           </thead>
           <tbody md-body>
           <tr md-row ng-repeat="operation in operations">
-            <td md-cell>{{operation.id}}</td>
+            <td md-cell>{{operation.creationDate | date:'dd/MM/yyyy'}}</td>
             <td md-cell>{{operation.name}}</td>
+            <td md-cell>{{operation.startDate | date:'dd/MM/yyyy'}}</td>
+            <td md-cell>{{operation.endDate | date:'dd/MM/yyyy'}}</td>
             <td md-cell>{{operation.frequency}}</td>
           </tr>
           </tbody>
         </table>
       </md-table-container>
-    </div>
+    </md-card>
     <section flex>
       <md-button class="md-fab md-mini" aria-label="FAB" style="margin-top: 20px"
                  ui-sref="operationCreate({accountId: accountId, siteId: siteId, areaId: areaId})">

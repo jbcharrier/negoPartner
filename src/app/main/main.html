@@ -6,15 +6,17 @@
           <tr md-row>
             <th md-column><span>Client</span></th>
             <th md-column>Date de création</th>
+            <th md-column></th>
+            <th md-column></th>
           </tr>
         </thead>
         <tbody md-body>
           <tr md-row ng-repeat="account in accounts">
-            <td md-cell><a ui-sref="accountDetails({id: account.id})">{{ account.name }}</a></td>
+            <td md-cell><b><a ui-sref="accountDetails({id: account.id})">{{ account.name }}</a></b></td>
             <td md-cell>{{ account.creationDate | date:'medium'}}</td>
             <td md-cell>
               <md-button class="md-icon-button md-primary" ng-click="deleteAccount(account.id)">
-                <md-icon class="material-icons themeBlue">delete</md-icon>
+                <md-icon class="material-icons">delete</md-icon>
                 <md-tooltip md-direction="right">
                   Supprimer
                 </md-tooltip>

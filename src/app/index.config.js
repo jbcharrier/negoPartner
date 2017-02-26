@@ -1,7 +1,11 @@
-export function config ($logProvider, firebase) {
+export function config ($logProvider, $mdThemingProvider, firebase) {
   'ngInject';
   // Enable log
   $logProvider.debugEnabled(true);
+  
+  $mdThemingProvider.theme('default')
+    .primaryPalette('teal')
+    .accentPalette('blue-grey');
   
   let config = {
     apiKey: "AIzaSyDg41Sa3TqN0eZaUhb1GS7_McmACo8up1c",
