@@ -14,6 +14,5 @@ export class LoginController {
         $log.error(error);
       });
     }
-    
   }
 }

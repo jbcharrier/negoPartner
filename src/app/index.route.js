@@ -89,6 +89,11 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
         siteId: null,
         areaId: null
       }
+    })
+    .state('areaType', {
+      url: '/area-type',
+      templateUrl: 'app/areaType/areaType.html',
+      controller: 'AreaTypeController'
     });
 
   $urlRouterProvider.otherwise('/');
