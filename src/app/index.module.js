@@ -22,6 +22,9 @@ import { FrequencyService } from '../app/service/frequency/frequency-service';
 import { AreaTypeFactory } from '../app/service/areaFactory';
 import { AreaTypeController } from '../app/areaType/areaType';
 import { OperationTypeFactory } from '../app/service/operationFactory';
+import { UserCreateController } from '../app/user/userCreateCtrl';
+import { UserFactory } from '../app/service/userFactory';
+
 
 angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages', 'md.data.table'])
   .constant('moment', moment)
@@ -34,6 +37,7 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .service('FrequencyService', FrequencyService)
   .service('AreaType', AreaTypeFactory)
   .service('OperationType', OperationTypeFactory)
+  .service('Users', UserFactory)
   .controller('MainController', MainController)
   .controller('LoginController', LoginController)
   .controller('AccountCreateController', AccountCreateController)
@@ -47,4 +51,5 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .controller('OperationsListController', OperationsListController)
   .controller('OperationCreateController', OperationCreateController)
   .controller('AreaTypeController', AreaTypeController)
+  .controller('UserCreateController', UserCreateController)
   .directive('navbar', NavbarDirective);

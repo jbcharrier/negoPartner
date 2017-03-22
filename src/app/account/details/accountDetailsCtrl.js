@@ -1,5 +1,5 @@
 export class AccountDetailsController {
-  constructor ($scope, Account, $stateParams) {
+  constructor ($scope, $stateParams, Account, Users) {
     'ngInject';
   
     var accountId = $stateParams.id;
@@ -7,6 +7,14 @@ export class AccountDetailsController {
     if (accountId) {
       Account.getAccount(accountId).then(function (account) {
         $scope.account = account;
+      })
+    }
+    
+    if(accountId) {
+      console.log("accountId", accountId);
+      Users.getUserList(accountId).then(function (users) {
+        console.log("users", users);
+        $scope.users = users;
       })
     }
   

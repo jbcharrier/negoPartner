@@ -94,6 +94,11 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       url: '/area-type',
       templateUrl: 'app/areaType/areaType.html',
       controller: 'AreaTypeController'
+    })
+    .state('userCreate', {
+      url: '/user/:accountId',
+      templateUrl: 'app/user/userCreate.html',
+      controller: 'UserCreateController'
     });
 
   $urlRouterProvider.otherwise('/');
