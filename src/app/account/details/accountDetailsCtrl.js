@@ -11,9 +11,7 @@ export class AccountDetailsController {
     }
     
     if(accountId) {
-      console.log("accountId", accountId);
       Users.getUserList(accountId).then(function (users) {
-        console.log("users", users);
         $scope.users = users;
       })
     }

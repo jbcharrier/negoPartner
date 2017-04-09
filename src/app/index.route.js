@@ -1,25 +1,52 @@
 export function routerConfig ($stateProvider, $urlRouterProvider) {
   'ngInject';
   $stateProvider
-  .state('login', {
-      url: '/login',
-      templateUrl: 'app/login/login.html',
-      controller: 'LoginController'
-    })
+    .state('login', {
+        url: '/',
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginController'
+      })
     .state('home', {
-      url: '/',
+      url: '/home',
       templateUrl: 'app/main/main.html',
-      controller: 'MainController'
+      controller: 'MainController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     })
     .state('accountCreate', {
-    url: '/account',
-    templateUrl: 'app/account/create/accountCreate.html',
-    controller: 'AccountCreateController'
+      url: '/account',
+      templateUrl: 'app/account/create/accountCreate.html',
+      controller: 'AccountCreateController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     })
     .state('accountDetails', {
       url: '/account/:id',
       templateUrl: 'app/account/details/accountDetails.html',
-      controller: 'AccountDetailsController'
+      controller: 'AccountDetailsController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     })
     .state('accountModify', {
       url: '/account/modify/:id',
@@ -28,13 +55,29 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       resolve: {
         accountToModify: function (Account, $stateParams) {
           return Account.getAccount($stateParams.id);
+        },
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
         }
       }
     })
     .state('siteCreate', {
       url: '/site/:accountId',
       templateUrl: 'app/site/create/siteCreate.html',
-      controller: 'SiteCreateController'
+      controller: 'SiteCreateController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     })
     .state('siteDetails', {
       url: '/site/:id/details',
@@ -42,6 +85,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'SiteDetailsController',
       params:{
         accountId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
       }
     })
     .state('siteModify', {
@@ -50,6 +102,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'SiteModifyController',
       params:{
         accountId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
       }
     })
     .state('areasList', {
@@ -59,6 +120,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       params:{
         accountId: null,
         siteId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
       }
     })
     .state('areaCreate', {
@@ -68,6 +138,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       params:{
         accountId: null,
         siteId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
       }
     })
     .state('operationsList', {
@@ -78,6 +157,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
         accountId: null,
         siteId: null,
         areaId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
       }
     })
     .state('operationCreate', {
@@ -88,17 +176,44 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
         accountId: null,
         siteId: null,
         areaId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
       }
     })
     .state('areaType', {
       url: '/area-type',
       templateUrl: 'app/areaType/areaType.html',
-      controller: 'AreaTypeController'
+      controller: 'AreaTypeController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     })
     .state('userCreate', {
       url: '/user/:accountId',
       templateUrl: 'app/user/userCreate.html',
-      controller: 'UserCreateController'
+      controller: 'UserCreateController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     });
 
   $urlRouterProvider.otherwise('/');

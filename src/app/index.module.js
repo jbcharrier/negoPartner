@@ -24,6 +24,7 @@ import { AreaTypeController } from '../app/areaType/areaType';
 import { OperationTypeFactory } from '../app/service/operationFactory';
 import { UserCreateController } from '../app/user/userCreateCtrl';
 import { UserFactory } from '../app/service/userFactory';
+import { Auth } from '../app/service/auth/auth.service';
 
 
 angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages', 'md.data.table'])
@@ -38,6 +39,7 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .service('AreaType', AreaTypeFactory)
   .service('OperationType', OperationTypeFactory)
   .service('Users', UserFactory)
+  .service('Auth', Auth)
   .controller('MainController', MainController)
   .controller('LoginController', LoginController)
   .controller('AccountCreateController', AccountCreateController)
