@@ -1,0 +1,72 @@
+<md-content class="areaType" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80">
+    <h3 class="text-center">Ajouter un nouveau type d'espace</h3>
+    <form name="areaTypeForm" ng-submit="createAreaType(areaType)" layout="column">
+
+      <section>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Nom de l'espace*</label>
+          <input ng-model="areaType.name" required>
+        </md-input-container>
+      </section>
+
+      <section ng-if="operationInputIsVisible == false">
+        <md-input-container>
+          <label>Sélectionner une opération</label>
+          <md-select ng-model="operationSelected" required>
+            <md-option><em></em></md-option>
+            <md-option ng-repeat="operation in operationTypes" ng-value="operation">
+              {{operation.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+        <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-click="addOperationToArea(operationSelected)">
+          <md-tooltip md-direction="bottom">Ajouter l'opération à l'espace</md-tooltip>
+          <md-icon class="material-icons">add_box</md-icon>
+        </md-button>
+        <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-click="showOperationInput()">
+          <md-tooltip md-direction="right">Créer une nouvelle opération</md-tooltip>
+          <md-icon class="material-icons">playlist_add</md-icon>
+        </md-button>
+      </section>
+
+      <section ng-if="operationInputIsVisible == true">
+        <md-input-container class="md-block" flex>
+          <label>Nom de la nouvelle opération</label>
+          <input ng-model="operationType.name" required>
+        </md-input-container>
+        <section layout layout-align="center center">
+          <md-input-container flex>
+            <label>Fréquence</label>
+            <md-select ng-model="operationType.frequency" required>
+              <md-option><em></em></md-option>
+              <md-option ng-repeat="frequency in frequencies" ng-value="frequency">
+                {{frequency}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-click="addOperationType(operationType)">
+            <md-tooltip md-direction="right">Sauvegarder</md-tooltip>
+            <md-icon class="material-icons">add_circle_outline</md-icon>
+          </md-button>
+        </section>
+      </section>
+
+      <section style="margin-top: 5%">
+        <div class="text-right" layout layout-align="end center">
+          <md-button class="md-raised md-primary" type="submit">Ajouter</md-button>
+        </div>
+      </section>
+
+    </form>
+  </div>
+  <!--<div flex="20">-->
+    <!--<section>-->
+      <!--<ul>-->
+        <!--<li ng-repeat="operationAdded in operationsAdded">-->
+          <!--{{operationAdded.name}}-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</section>-->
+  <!--</div>-->
+</md-content>

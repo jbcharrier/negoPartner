@@ -1,0 +1,44 @@
+<md-content class="siteCreate" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80">
+    <h3 class="text-center">Ajouter un nouveau site</h3>
+    <form name="siteForm" ng-submit="saveSite()">
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom du site*</label>
+        <input ng-model="site.name" required>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Addresse</label>
+        <input ng-model="site.address">
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Complément d'adresse</label>
+        <input ng-model="site.addressComplement">
+      </md-input-container>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Ville</label>
+          <input ng-model="site.city">
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>CP</label>
+          <input name="postalCode" ng-model="site.postalCode" md-maxlength="5">
+        </md-input-container>
+      </div>
+
+      <md-input-container class="md-block">
+        <label>Complément</label>
+        <textarea ng-model="site.complement" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <div class="text-right" layout-wrap>
+        <md-button class="md-raised md-primary" type="submit">Ajouter</md-button>
+      </div>
+
+    </form>
+  </div>
+</md-content>

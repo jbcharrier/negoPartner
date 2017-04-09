@@ -1,0 +1,54 @@
+<md-content class="userCreate" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80">
+    <h3 class="text-center">Ajouter un nouvel utilisateur</h3>
+    <form name="userForm" ng-submit="saveUser(user)">
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom*</label>
+        <input ng-model="user.lastname" required>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Prénom</label>
+        <input ng-model="user.firstname">
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Fonction</label>
+        <input ng-model="user.position">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Sélectionnez un site pour l'utilisateur</label>
+        <md-select ng-model="user.siteSelected" required>
+          <md-option><em></em></md-option>
+          <md-option ng-repeat="(key, value) in sites" ng-value="value.id">
+            {{value.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Email(*)</label>
+          <input ng-model="user.email" required>
+        </md-input-container>
+
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>tél.</label>
+          <input ng-model="user.phone">
+        </md-input-container>
+      </div>
+
+      <md-input-container class="md-block">
+        <label>Complément</label>
+        <textarea ng-model="user.complement" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <div class="text-right" layout-wrap>
+        <md-button class="md-raised md-primary" type="submit">Ajouter</md-button>
+      </div>
+
+    </form>
+  </div>
+</md-content>
