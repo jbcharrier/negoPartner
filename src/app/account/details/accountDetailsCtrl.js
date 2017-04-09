@@ -2,6 +2,10 @@ export class AccountDetailsController {
   constructor ($scope, $stateParams, Account, Users) {
     'ngInject';
   
+    if(sessionStorage.getItem("siteId")) {
+      sessionStorage.removeItem("siteId")
+    }
+    
     var accountId = $stateParams.id;
   
     if (accountId) {

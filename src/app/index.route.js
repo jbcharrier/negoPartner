@@ -12,8 +12,10 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'MainController',
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
-            console.log("Auth Permission OK")
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if (Auth.checkPermission()){
+            console.log("Auth Permission OK Auth")
           } else {
             $state.path('login');
           }
@@ -26,7 +28,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'AccountCreateController',
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -40,7 +44,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'AccountDetailsController',
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -57,7 +63,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
           return Account.getAccount($stateParams.id);
         },
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -71,7 +79,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'SiteCreateController',
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -88,7 +98,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       },
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -105,7 +117,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       },
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -123,7 +137,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       },
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -141,7 +157,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       },
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -160,7 +178,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       },
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -179,7 +199,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       },
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -193,7 +215,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'AreaTypeController',
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
@@ -207,7 +231,9 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       controller: 'UserCreateController',
       resolve: {
         "check": function(Auth, $state){
-          if(Auth.checkPermission()){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
             console.log("Auth Permission OK")
           } else {
             $state.path('login');
