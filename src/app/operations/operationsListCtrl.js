@@ -1,5 +1,5 @@
 export class OperationsListController {
-  constructor ($scope, $stateParams, Account) {
+  constructor ($scope, $state, $stateParams, Account) {
     'ngInject';
   
     if(sessionStorage.getItem("accountId") && sessionStorage.getItem("siteId") && sessionStorage.getItem("areaId")) {
@@ -17,8 +17,14 @@ export class OperationsListController {
 
     if ($scope.accountId && $scope.siteId && $scope.areaId) {
       Account.getOperationsList($scope.accountId, $scope.siteId, $scope.areaId).then(function (operations) {
-        console.log("operations", operations);
         $scope.operations = operations;
+      })
+    }
+  
+    $scope.delete = function (operationId) {
+      Account.deleteOperation($scope.accountId, $scope.siteId, $scope.areaId, operationId).then(function (data) {
+        console.log(data);
+        $state.reload();
       })
     }
   }

@@ -1,5 +1,5 @@
 export class UserModifyController {
-  constructor ($scope, $stateParams, $state, Users) {
+  constructor ($scope, $stateParams, $state, Users, Account) {
     'ngInject';
     
     var accountId = $stateParams.accountId;
@@ -8,7 +8,10 @@ export class UserModifyController {
     if (accountId && userId) {
       Users.getUser(accountId, userId).then(function (user) {
         $scope.user = user;
-      })
+      });
+      Account.getAccount(accountId).then(function (data) {
+        $scope.sites = data.sites;
+      });
     }
     
     $scope.updateUser = function (userToUpdate) {

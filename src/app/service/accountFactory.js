@@ -83,6 +83,17 @@ export class AccountFactory {
     return defer.promise;
   }
   
+  getSiteList(accountId){
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').once('value').then(function (data) {
+      let sites = data.val();
+      defer.resolve(sites);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
   getSite(accountId, siteId){
     let defer = this.$q.defer();
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).once('value').then(function (data) {
@@ -103,6 +114,27 @@ export class AccountFactory {
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').once('value').then(function (data) {
       let areasList = data.val();
       defer.resolve(areasList);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  getArea (accountId, siteId, areaId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).once('value').then(function (data) {
+      defer.resolve(data);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  modifyArea (accountId, siteId, areaId, area) {
+    delete  area.operations['$$mdSelectId'];
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).update(area).then(function () {
+      defer.resolve('area modified with success');
     }, function (error) {
       defer.reject(error);
     });
@@ -140,5 +172,15 @@ export class AccountFactory {
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).child('operations').push(operation).then(function (data) {
       data.update({id:data.key});
     })
+  }
+  
+  deleteOperation (accountId, siteId, areaId, operationId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).child('operations').child(operationId).remove().then(function (data) {
+      defer.resolve('operation deleted with success');
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
   }
 }

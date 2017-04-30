@@ -10,6 +10,7 @@
               <th md-column>Début</th>
               <th md-column>Fin</th>
               <th md-column>Fréquence de l'opération</th>
+              <th></th>
             </tr>
           </thead>
           <tbody md-body>
@@ -19,6 +20,14 @@
             <td md-cell>{{operation.startDate | date:'dd/MM/yyyy'}}</td>
             <td md-cell>{{operation.endDate | date:'dd/MM/yyyy'}}</td>
             <td md-cell>{{operation.frequency}}</td>
+            <td md-cell class="align-right">
+              <md-button class="md-icon-button md-primary" ng-click="delete(operation.id)">
+                <md-icon class="material-icons themeBlue">delete</md-icon>
+                <md-tooltip md-direction="right">
+                  Supprimer
+                </md-tooltip>
+              </md-button>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -26,12 +35,20 @@
     </md-card>
     <section flex>
       <md-button class="md-fab md-mini" aria-label="FAB" style="margin-top: 20px"
-                 ui-sref="operationCreate({accountId: accountId, siteId: siteId, areaId: areaId})">
+                 ui-sref="areasList">
         <md-icon class="material-icons">add</md-icon>
         <md-tooltip md-direction="top">
           Ajouter une pièce
         </md-tooltip>
       </md-button>
     </section>
+  </section>
+  <section layout layout-align="center center">
+    <div flex="20">
+      <md-button class="md-primary md-raised"
+                 ui-sref="areasList">
+        <span>Retour aux espaces</span>
+      </md-button>
+    </div>
   </section>
 </md-content>

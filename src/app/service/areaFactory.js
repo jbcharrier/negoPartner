@@ -36,6 +36,19 @@ export class AreaTypeFactory {
   }
   
   saveAreaType (areaType) {
-    this.firebase.database().ref('areas').push(areaType);
+    this.firebase.database().ref('areas').push(areaType).then(function (data) {
+      data.update({id:data.key});
+    });
+  }
+  
+  deleteAreaType (areaTypeId) {
+    console.log("areaTypeId", areaTypeId);
+    let defer = this.$q.defer();
+    this.firebase.database().ref('areas').child(areaTypeId).remove().then(function () {
+      defer.resolve('Area-type deleted with success');
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
   }
 }

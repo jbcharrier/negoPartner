@@ -1,0 +1,32 @@
+<md-content class="areaModify" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80">
+    <h3 class="text-center">Modifier cet espace</h3>
+    <form name="areaForm" ng-submit="modify(area)">
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Nom de l'espace*</label>
+        <input ng-model="area.name" required>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Utiliser un modèle d'espace</label>
+        <md-select ng-model="area.operations">
+          <md-option><em></em></md-option>
+          <md-option ng-repeat="(key, value) in areaTypes" ng-value="value.operations">
+            {{value.name}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Complément</label>
+        <textarea ng-model="area.complement" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <div class="text-right" layout-wrap>
+        <md-button class="md-raised md-primary" type="submit">Modifier</md-button>
+      </div>
+
+    </form>
+  </div>
+</md-content>

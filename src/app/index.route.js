@@ -167,6 +167,22 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('areaModify', {
+      url: '/areas/:id/modify',
+      templateUrl: 'app/areas/areaModify/areaModify.html',
+      controller: 'AreaModifyController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
+    })
     .state('operationsList', {
       url: '/operations',
       templateUrl: 'app/operations/operationsList.html',
@@ -213,6 +229,22 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       url: '/area-type',
       templateUrl: 'app/areaType/areaType.html',
       controller: 'AreaTypeController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
+    })
+    .state('areaTypeList', {
+      url: '/area-types',
+      templateUrl: 'app/areaType/list/areaTypeList.html',
+      controller: 'AreaTypeListController',
       resolve: {
         "check": function(Auth, $state){
           if(sessionStorage.getItem('access')){

@@ -14,8 +14,10 @@ export class UserDetailsController {
     
     if($scope.accountId && $scope.userId){
       Users.getUser($scope.accountId, $scope.userId).then(function (data) {
-        console.log("data", data);
         $scope.user = data;
+        Account.getSite($scope.accountId, $scope.user.siteSelected).then(function (data) {
+          $scope.userSite = data;
+        })
       })
     }
   }

@@ -27,6 +27,9 @@ import { UserFactory } from '../app/service/userFactory';
 import { Auth } from '../app/service/auth/auth.service';
 import { UserModifyController } from '../app/user/modify/userModifyCtrl';
 import { UserDetailsController } from '../app/user/details/userDetailsCtrl';
+import { AreaModifyController } from '../app/areas/areaModify/areaModifyCtrl';
+import { AreaTypeListController } from '../app/areaType/list/areaTypeListCtrl';
+
 
 
 
@@ -59,4 +62,6 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .controller('UserCreateController', UserCreateController)
   .controller('UserModifyController', UserModifyController)
   .controller('UserDetailsController', UserDetailsController)
+  .controller('AreaModifyController', AreaModifyController)
+  .controller('AreaTypeListController', AreaTypeListController)
   .directive('navbar', NavbarDirective);

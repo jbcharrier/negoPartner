@@ -28,5 +28,4 @@ export class OperationTypeFactory {
       data.update({id:data.key});
     });
   }
-  
 }
