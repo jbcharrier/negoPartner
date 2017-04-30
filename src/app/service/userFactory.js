@@ -32,11 +32,11 @@ export class UserFactory {
     return this.user;
   }
   
-  getUser (id) {
+  getUser (accountId, userId) {
     let defer = this.$q.defer();
-    this.firebase.database().ref('account').child(id).once('value').then(function (data) {
-      let account = data.val();
-      defer.resolve(account);
+    this.firebase.database().ref('account').child(accountId).child('users').child(userId).once('value').then(function (data) {
+      let user = data.val();
+      defer.resolve(user);
     }, function (error) {
       defer.reject(error);
     });
@@ -63,17 +63,23 @@ export class UserFactory {
   }
   
   
-  delete (id) {
+  delete(accountId, userId) {
     let defer = this.$q.defer();
-    this.firebase.database().ref('account').child(id).remove().then(function () {
-      defer.resolve('success');
+    this.firebase.database().ref('account').child(accountId).child('users').child(userId).remove().then(function () {
+      defer.resolve('user deleted with success');
     }, function (error) {
       defer.reject(error);
     });
     return defer.promise;
   }
   
-  update(account) {
-    this.firebase.database().ref('account').child(account.id).update(account);
+  update(accountId, userId, userToUpdate) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('users').child(userId).update(userToUpdate).then(function () {
+      defer.resolve('user modified with success');
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
   }
 }

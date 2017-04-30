@@ -1,5 +1,5 @@
 export class AccountDetailsController {
-  constructor ($scope, $stateParams, Account, Users) {
+  constructor ($scope, $stateParams, $state, Account, Users) {
     'ngInject';
   
     if(sessionStorage.getItem("siteId")) {
@@ -27,6 +27,13 @@ export class AccountDetailsController {
             $scope.account = account;
           });
         }
+      })
+    };
+    
+    $scope.deleteUser = function (userId) {
+      Users.delete(accountId, userId).then(function (data) {
+        console.log(data);
+        $state.reload();
       })
     }
   }

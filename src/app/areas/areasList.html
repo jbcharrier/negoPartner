@@ -5,19 +5,33 @@
         <thead md-head>
         <tr md-row>
           <th md-column><span>Espaces</span></th>
+          <th md-column>Opérations</th>
           <th md-column>Description</th>
           <th md-column></th>
           <th md-column></th>
-          <th md-column>Opérations</th>
         </tr>
         </thead>
         <tbody md-body>
         <tr md-row ng-repeat="area in areas">
-          <td md-cell><a ui-sref="accountDetails({id: account.id})">{{ area.name }}</a></td>
+          <td md-cell><a ui-sref="accountDetails({id: account.id})">{{ area.name }}
+            <md-tooltip md-direction="right">
+              Details
+            </md-tooltip></a>
+          </td>
+          <td md-cell>
+            <a ui-sref="operationsList({accountId: accountId, siteId: siteId, areaId: area.id})">
+              <md-button class="md-icon-button md-primary">
+                <md-icon class="material-icons themeBlue">list</md-icon>
+                <md-tooltip md-direction="right">
+                  Operations
+                </md-tooltip>
+              </md-button>
+            </a>
+          </td>
           <td md-cell>
             <span>{{area.description}}</span>
           </td>
-          <td md-cell>
+          <td md-cell class="align-right">
             <md-button class="md-icon-button md-primary" ng-click="deleteArea(area.id)">
               <md-icon class="material-icons themeBlue">delete</md-icon>
               <md-tooltip md-direction="right">
@@ -31,16 +45,6 @@
                 <md-icon class="material-icons themeBlue">create</md-icon>
                 <md-tooltip md-direction="right">
                   Modifier
-                </md-tooltip>
-              </md-button>
-            </a>
-          </td>
-          <td md-cell>
-            <a ui-sref="operationsList({accountId: accountId, siteId: siteId, areaId: area.id})">
-              <md-button class="md-icon-button md-primary">
-                <md-icon class="material-icons themeBlue">list</md-icon>
-                <md-tooltip md-direction="right">
-                  Operations
                 </md-tooltip>
               </md-button>
             </a>

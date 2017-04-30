@@ -1,5 +1,5 @@
 export class AccountCreateController {
-  constructor($scope, Account){
+  constructor($scope, $state, Account){
     'ngInject';
     
     $scope.account = Account.get();
@@ -12,6 +12,7 @@ export class AccountCreateController {
       $scope.account.creationDate = Date.now();
       Account.save($scope.account);
       $scope.reset();
+      $state.go('home');
     }
   }
 }

@@ -108,13 +108,13 @@
                   <div class="material-icons md-avatar-icon">person_pin</div>
                   <div class="md-list-item-text" layout="row">
                     <div flex>
-                      <a ui-sref="siteDetails({id: site.id, accountId: account.id})"><h3><b><em>{{ user.firstname }} {{user.lastname}}</em></b></h3></a>
+                      <a ui-sref="userDetails({id: user.id, accountId: account.id})"><h3><b><em>{{ user.firstname }} {{user.lastname}}</em></b></h3></a>
                       <p>{{ user.position }}</p>
                     </div>
                   </div>
                 </md-list-item>
                 <div flex="20">
-                  <md-button class="md-icon-button md-primary" ui-sref="siteModify({accountId: account.id, id: site.id})">
+                  <md-button class="md-icon-button md-primary" ui-sref="userModify({accountId: account.id, id: user.id})">
                     <md-icon class="material-icons themeBlue">create</md-icon>
                     <md-tooltip md-direction="right">
                       Modifier cet utilisateur
@@ -122,7 +122,7 @@
                   </md-button>
                 </div>
                 <div flex="20">
-                  <md-button class="md-icon-button md-primary" ng-click="deleteSite(user.id)">
+                  <md-button class="md-icon-button md-primary" ng-click="deleteUser(user.id)">
                     <md-icon class="material-icons themeBlue">delete</md-icon>
                     <md-tooltip md-direction="right">
                       Supprimer cet utilisateur

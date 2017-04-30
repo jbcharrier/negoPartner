@@ -25,6 +25,9 @@ import { OperationTypeFactory } from '../app/service/operationFactory';
 import { UserCreateController } from '../app/user/userCreateCtrl';
 import { UserFactory } from '../app/service/userFactory';
 import { Auth } from '../app/service/auth/auth.service';
+import { UserModifyController } from '../app/user/modify/userModifyCtrl';
+import { UserDetailsController } from '../app/user/details/userDetailsCtrl';
+
 
 
 angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages', 'md.data.table'])
@@ -54,4 +57,6 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .controller('OperationCreateController', OperationCreateController)
   .controller('AreaTypeController', AreaTypeController)
   .controller('UserCreateController', UserCreateController)
+  .controller('UserModifyController', UserModifyController)
+  .controller('UserDetailsController', UserDetailsController)
   .directive('navbar', NavbarDirective);

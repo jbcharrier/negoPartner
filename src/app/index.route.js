@@ -240,7 +240,44 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
           }
         }
       }
+    })
+    .state('userModify', {
+      url: '/user/:id/modify',
+      templateUrl: 'app/user/modify/userModify.html',
+      controller: 'UserModifyController',
+      params:{
+        accountId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
+    })
+    .state('userDetails', {
+      url: '/user/:id/details',
+      templateUrl: 'app/user/details/userDetails.html',
+      controller: 'UserDetailsController',
+      params:{
+        accountId: null
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     });
-
   $urlRouterProvider.otherwise('/');
 }

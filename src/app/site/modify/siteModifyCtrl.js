@@ -13,7 +13,7 @@ export class SiteModifyController {
     
     $scope.update = function (siteToUpdate) {
       Account.updateSite(accountId, siteId, siteToUpdate);
-        $state.go('siteDetails', {id: siteId, accountId: accountId});
+      $state.go('accountDetails', {id: accountId});
     };
     
     $scope.deleteSite = function (siteId) {

@@ -2,6 +2,10 @@ export class AreasListController {
   constructor ($scope, $state, Account, $stateParams) {
     'ngInject';
   
+    if(sessionStorage.getItem("areaId")){
+      sessionStorage.removeItem("areaId")
+    }
+    
     if(sessionStorage.getItem("accountId") && sessionStorage.getItem("siteId")) {
       $scope.accountId = sessionStorage.getItem("accountId");
       $scope.siteId = sessionStorage.getItem("siteId");
