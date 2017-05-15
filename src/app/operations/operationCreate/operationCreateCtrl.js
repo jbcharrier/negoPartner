@@ -1,10 +1,16 @@
 export class OperationCreateController {
-  constructor ($scope, $state, $stateParams, Account, FrequencyService, moment) {
+  constructor ($scope, $state, Account, FrequencyService, moment) {
     'ngInject';
   
-    $scope.accountId = $stateParams.accountId;
-    $scope.siteId = $stateParams.siteId;
-    $scope.areaId = $stateParams.areaId;
+  
+    if(sessionStorage.getItem("accountId") && sessionStorage.getItem("siteId") && sessionStorage.getItem("areaId")) {
+      $scope.accountId = sessionStorage.getItem("accountId");
+      $scope.siteId = sessionStorage.getItem("siteId");
+      $scope.areaId = sessionStorage.getItem("areaId");
+    } else {
+      $state.go('home');
+    }
+    
     $scope.operation = {};
   
     $scope.frequencies = FrequencyService.getFrequencyList();
