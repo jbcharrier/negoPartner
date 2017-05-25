@@ -1,18 +1,23 @@
 <md-content class="areaCreate" layout="row" layout-align="center center">
   <div flex-gt-md="40" flex-gt-sm="60" flex="80">
-    <h3 class="text-center">Ajouter un nouvel espace</h3>
+    <h3 class="text-center">Créer un nouvel espace</h3>
     <form name="areaForm" ng-submit="createArea()">
 
       <md-input-container class="md-block" flex-gt-sm>
-        <label>Nom de l'espace*</label>
-        <input ng-model="area.name" required>
+        <label>Nom de l'espace</label>
+        <input ng-model="area.name">
+      </md-input-container>
+
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Superficie (m2)</label>
+        <input ng-model="area.surface">
       </md-input-container>
 
       <md-input-container>
         <label>Utiliser un modèle d'espace</label>
-        <md-select ng-model="area.operations">
+        <md-select ng-model="areaType">
           <md-option><em></em></md-option>
-          <md-option ng-repeat="(key, value) in areaTypes" ng-value="value.operations">
+          <md-option ng-repeat="(key, value) in areaTypes" ng-value="key">
             {{value.name}}
           </md-option>
         </md-select>

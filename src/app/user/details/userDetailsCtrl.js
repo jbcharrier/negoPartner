@@ -15,9 +15,15 @@ export class UserDetailsController {
     if($scope.accountId && $scope.userId){
       Users.getUser($scope.accountId, $scope.userId).then(function (data) {
         $scope.user = data;
-        Account.getSite($scope.accountId, $scope.user.siteSelected).then(function (data) {
-          $scope.userSite = data;
-        })
+        if(typeof $scope.user.siteSelected === 'string'){
+          Account.getSite($scope.accountId, $scope.user.siteSelected).then(function (data) {
+            $scope.userSites = data;
+          })
+        } else {
+          Account.getSiteList($scope.accountId).then(function (data) {
+            $scope.userSites = data;
+          })
+        }
       })
     }
   }

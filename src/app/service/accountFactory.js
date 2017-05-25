@@ -142,6 +142,7 @@ export class AccountFactory {
   }
   
   saveArea (accountId, siteId, area) {
+    console.log("area", area);
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').push(area).then(function (data) {
       data.update({id:data.key});
     })

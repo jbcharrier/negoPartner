@@ -55,7 +55,7 @@
           <div class="material-icons md-avatar-icon">directions</div>
           <div class="md-list-item-text" layout="row" layout-align="start center">
               <div flex>
-                <h3>{{ userSite.name }}</h3>
+                <h3 ng-repeat="(key, value) in userSites">{{ value.name }}</h3>
                 <p>Sites de référence</p>
               </div>
           </div>

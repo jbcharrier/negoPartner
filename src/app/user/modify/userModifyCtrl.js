@@ -15,6 +15,21 @@ export class UserModifyController {
     }
     
     $scope.updateUser = function (userToUpdate) {
+      if(userToUpdate.siteSelected === 'allSites') {
+        userToUpdate.siteSelected = [];
+        for (let id in $scope.sites){
+          userToUpdate.siteSelected.push(id)
+        }
+      }
+      if(!angular.isDefined(userToUpdate.siteSelected)){
+        $mdToast.show(
+          $mdToast.simple()
+            .textContent("Veuillez sélectionner un site pour cet utilisateur")
+            .position('bottom right')
+            .hideDelay(7000)
+        );
+        return;
+      }
       Users.update(accountId, userId, userToUpdate);
       $state.go('accountDetails', {id: accountId});
     };

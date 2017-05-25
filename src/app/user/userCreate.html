@@ -19,9 +19,9 @@
       </md-input-container>
 
       <md-input-container>
-        <label>Sélectionnez un site pour l'utilisateur</label>
+        <label>Sélectionnez un site pour l'utilisateur(*)</label>
         <md-select ng-model="user.siteSelected" required>
-          <md-option><em></em></md-option>
+          <md-option value="allSites"><em>Tous les sites</em></md-option>
           <md-option ng-repeat="(key, value) in sites" ng-value="value.id">
             {{value.name}}
           </md-option>
