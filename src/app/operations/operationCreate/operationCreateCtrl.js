@@ -1,5 +1,5 @@
 export class OperationCreateController {
-  constructor ($scope, $state, Account, FrequencyService, moment) {
+  constructor ($scope, $state, Account, OperationFrequency, moment) {
     'ngInject';
   
   
@@ -13,7 +13,7 @@ export class OperationCreateController {
     
     $scope.operation = {};
   
-    $scope.frequencies = FrequencyService.getFrequencyList();
+    $scope.frequencies = OperationFrequency.getFrequencyList();
   
     $scope.resetOperation = function () {
       $scope.operation = {};
@@ -23,6 +23,7 @@ export class OperationCreateController {
       $scope.operation.creationDate = Date.now();
       $scope.operation.startDate = moment(newOperation.startDate).format('DD/MM/YYYY');
       $scope.operation.endDate = moment(newOperation.endDate).format('DD/MM/YYYY');
+      $scope.operation.result = 0;
       Account.saveOperation($scope.accountId, $scope.siteId, $scope.areaId, $scope.operation);
       $scope.resetOperation();
       $state.go('operationsList', {accountId: $scope.accountId, siteId: $scope.siteId, areaId: $scope.areaId});

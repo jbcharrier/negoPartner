@@ -18,7 +18,7 @@ import { AreasListController } from '../app/areas/areasListCtrl';
 import { AreaCreateController } from '../app/areas/areaCreate/areaCreateCtrl';
 import { OperationsListController } from '../app/operations/operationsListCtrl';
 import { OperationCreateController } from '../app/operations/operationCreate/operationCreateCtrl';
-import { FrequencyService } from '../app/service/frequency/frequency-service';
+import { OperationFrequencyService } from '../app/service/frequency/operationFrequencyService';
 import { AreaTypeFactory } from '../app/service/areaFactory';
 import { AreaTypeController } from '../app/areaType/areaType';
 import { OperationTypeFactory } from '../app/service/operationFactory';
@@ -29,8 +29,7 @@ import { UserModifyController } from '../app/user/modify/userModifyCtrl';
 import { UserDetailsController } from '../app/user/details/userDetailsCtrl';
 import { AreaModifyController } from '../app/areas/areaModify/areaModifyCtrl';
 import { AreaTypeListController } from '../app/areaType/list/areaTypeListCtrl';
-
-
+import { AuditFrequencyService } from '../app/service/frequency/auditFrequencyService';
 
 
 angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages', 'md.data.table'])
@@ -41,11 +40,12 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .run(runBlock)
   .service('User', LoginFactory)
   .service('Account', AccountFactory)
-  .service('FrequencyService', FrequencyService)
+  .service('OperationFrequency', OperationFrequencyService)
   .service('AreaType', AreaTypeFactory)
   .service('OperationType', OperationTypeFactory)
   .service('Users', UserFactory)
   .service('Auth', Auth)
+  .service('AuditFrequency', AuditFrequencyService)
   .controller('MainController', MainController)
   .controller('LoginController', LoginController)
   .controller('AccountCreateController', AccountCreateController)

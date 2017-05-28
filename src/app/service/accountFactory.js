@@ -131,7 +131,9 @@ export class AccountFactory {
   }
   
   modifyArea (accountId, siteId, areaId, area) {
-    delete  area.operations['$$mdSelectId'];
+    if(area.operations){
+      delete  area.operations['$$mdSelectId'];
+    }
     let defer = this.$q.defer();
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).update(area).then(function () {
       defer.resolve('area modified with success');
@@ -142,7 +144,6 @@ export class AccountFactory {
   }
   
   saveArea (accountId, siteId, area) {
-    console.log("area", area);
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').push(area).then(function (data) {
       data.update({id:data.key});
     })

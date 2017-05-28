@@ -9,6 +9,7 @@
             <th md-column>Opérations</th>
             <th md-column>Superficie (m2)</th>
             <th md-column>Description</th>
+            <th md-column>Audit</th>
             <th md-column></th>
             <th md-column></th>
           </tr>
@@ -31,6 +32,9 @@
             </td>
             <td md-cell>
               <span>{{area.complement}}</span>
+            </td>
+            <td md-cell>
+              <span>{{area.auditFrequency}}</span>
             </td>
             <td md-cell class="align-right">
               <md-button class="md-icon-button md-primary" ng-click="deleteArea(area.id)">

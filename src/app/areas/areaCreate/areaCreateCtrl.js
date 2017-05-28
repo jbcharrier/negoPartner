@@ -1,10 +1,13 @@
 export class AreaCreateController {
-  constructor ($scope, Account, AreaType, $stateParams, $state) {
+  constructor ($scope, $stateParams, $state, Account, AreaType,  AuditFrequency) {
     'ngInject';
     
     $scope.accountId = $stateParams.accountId;
     $scope.siteId = $stateParams.siteId;
     $scope.area = {};
+    $scope.auditStartDate = new Date();
+  
+    $scope.auditFrequencies = AuditFrequency.getFrequencyList();
     
     AreaType.getAreaTypeList().then(function (areaTypeList) {
       $scope.areaTypes = areaTypeList;
@@ -26,6 +29,10 @@ export class AreaCreateController {
       if(!angular.isDefined($scope.area.name) && !$scope.area.operations){
         return;
       }
+      
+      $scope.area.auditFrequency = $scope.auditFrequency || "Mensuel";
+      $scope.area.auditStartDate = $scope.auditStartDate.getTime();
+      
       if($scope.area.operations){
         delete $scope.area.operations.$$mdSelectId;
       }

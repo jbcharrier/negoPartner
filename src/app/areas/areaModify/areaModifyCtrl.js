@@ -1,5 +1,5 @@
 export class AreaModifyController {
-  constructor ($scope, $state, $stateParams, AreaType, Account) {
+  constructor ($scope, $state, $stateParams, Account, AuditFrequency) {
     'ngInject';
     
     $scope.area = {};
@@ -7,19 +7,18 @@ export class AreaModifyController {
     $scope.siteId = sessionStorage.getItem("siteId");
     $scope.areaId = $stateParams.id;
   
-    AreaType.getAreaTypeList().then(function (areaTypeList) {
-      $scope.areaTypes = areaTypeList;
-    });
+    $scope.auditFrequencies = AuditFrequency.getFrequencyList();
     
     if ($scope.accountId && $scope.siteId) {
       Account.getArea($scope.accountId, $scope.siteId, $scope.areaId).then(function (data) {
         $scope.area = data.val();
+        $scope.auditStartDate = new Date($scope.area.auditStartDate);
       })
     }
-    
-    $scope.modify = function (area) {
-      Account.modifyArea($scope.accountId, $scope.siteId, $scope.area.id, area).then(function (data) {
-        console.log(data);
+  
+    $scope.modify = function (area, auditStartDate) {
+      area.auditStartDate = auditStartDate.getTime();
+      Account.modifyArea($scope.accountId, $scope.siteId, $scope.area.id, area).then(function () {
         $state.go('areasList');
       })
     };

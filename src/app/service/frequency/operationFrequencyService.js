@@ -1,6 +1,6 @@
 "use strict";
 
-export class FrequencyService {
+export class OperationFrequencyService {
   constructor() {
     'ngInject';
     this.frequency = ['Ponctuel', 'Quotidien', 'Hebdomadaire', 'Mensuel', 'Trimestriel', 'Semestriel', 'Annuel'];

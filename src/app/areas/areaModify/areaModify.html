@@ -1,7 +1,7 @@
 <md-content class="areaModify" layout="row" layout-align="center center">
   <div flex-gt-md="40" flex-gt-sm="60" flex="80">
     <h3 class="text-center">Modifier cet espace</h3>
-    <form name="areaForm" ng-submit="modify(area)">
+    <form name="areaForm" ng-submit="modify(area, auditStartDate)">
 
       <md-input-container class="md-block" flex-gt-sm>
         <label>Nom de l'espace*</label>
@@ -13,15 +13,21 @@
         <input ng-model="area.surface">
       </md-input-container>
 
-      <md-input-container>
-        <label>Utiliser un modèle d'espace</label>
-        <md-select ng-model="area.operations">
-          <md-option><em></em></md-option>
-          <md-option ng-repeat="(key, value) in areaTypes" ng-value="value.operations">
-            {{value.name}}
-          </md-option>
-        </md-select>
-      </md-input-container>
+      <section layout layout-align="start center">
+        <md-input-container flex="45">
+          <label>Fréquence des audits pour cet espace</label>
+          <md-select ng-model="area.auditFrequency">
+            <md-option><em></em></md-option>
+            <md-option ng-repeat="auditFrequency in auditFrequencies" ng-value="auditFrequency">
+              {{auditFrequency}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+
+        <div flex="45" flex-offset="10">
+          <md-datepicker ng-model="auditStartDate" md-placeholder="Début des audits"></md-datepicker>
+        </div>
+      </section>
 
       <md-input-container class="md-block">
         <label>Complément</label>

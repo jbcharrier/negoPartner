@@ -1,5 +1,5 @@
 export class AreaTypeController {
-  constructor ($scope, $mdToast, $state, AreaType, OperationType, FrequencyService) {
+  constructor ($scope, $mdToast, $state, AreaType, OperationType, OperationFrequency) {
     'ngInject';
     
     $scope.operationInputIsVisible = false;
@@ -10,7 +10,7 @@ export class AreaTypeController {
     
     $scope.areaType = AreaType.get();
     $scope.operationsAdded = [];
-    $scope.frequencies = FrequencyService.getFrequencyList();
+    $scope.frequencies = OperationFrequency.getFrequencyList();
   
   
     $scope.showOperationInput = function () {
