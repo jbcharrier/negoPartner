@@ -38,6 +38,7 @@ export class AreaTypeController {
     };
   
     $scope.addOperationType = function (operationType) {
+      operationType.result = 0;
       operationType.creationDate = Date.now();
       OperationType.saveOperationType(operationType);
       $scope.resetOperation();
