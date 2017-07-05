@@ -1,0 +1,31 @@
+<md-content class="operationFromAreaType" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80" class="inputs-area">
+    <h3 class="text-center">Ajouter les opérations d'un espace-type</h3>
+
+      <section>
+        <md-input-container>
+          <label>Sélectionner un espace-type</label>
+          <md-select ng-model="areaTypeSelected" required>
+            <md-option><em></em></md-option>
+            <md-option ng-repeat="areaType in areaTypes" ng-value="areaType.operations">
+              {{areaType.name}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </section>
+
+      <section style="margin-top: 5%">
+        <div class="text-right" layout layout-align="end center">
+          <md-button class="md-raised md-primary" ng-click="addOperationsTypeToArea(areaTypeSelected)">Ajouter les opérations à l'espace</md-button>
+        </div>
+      </section>
+
+  </div>
+  <div flex-gt-md="20" flex-gt-sm="10" flex="10" style="margin-left: 30px">
+    <ul>
+      <li ng-repeat="operationsSelected in areaTypeSelected">
+        {{operationsSelected.name}}
+      </li>
+    </ul>
+  </div>
+</md-content>

@@ -326,6 +326,22 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
           }
         }
       }
+    })
+    .state('add-operation-from-espace-type', {
+      url: '/add-operation-from-espace-type',
+      templateUrl: 'app/operations/operationCreate/operationFromAreaType/operationFromAreaType.html',
+      controller: 'OperationFromAreaTypeController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     });
   $urlRouterProvider.otherwise('/');
 }

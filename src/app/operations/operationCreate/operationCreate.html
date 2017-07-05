@@ -25,9 +25,15 @@
         <textarea ng-model="operation.complement" md-maxlength="500" rows="5" md-select-on-focus></textarea>
       </md-input-container>
 
-      <section style="margin-top: 5%">
+      <section style="margin-top: 5%" layout>
+        <div class="text-right" layout layout-align="start center">
+          <a ui-sref="add-operation-from-espace-type">
+            <md-button class="md-raised">Ajouter les opérations d'un espace type</md-button>
+          </a>
+        </div>
+        <span flex></span>
         <div class="text-right" layout layout-align="end center">
-          <md-button class="md-raised md-primary" type="submit">Ajouter</md-button>
+          <md-button class="md-raised md-primary" type="submit">Ajouter l'operation</md-button>
         </div>
       </section>
 
