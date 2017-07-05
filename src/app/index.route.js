@@ -310,6 +310,22 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
           }
         }
       }
+    })
+  .state('auditList', {
+      url: '/auditList',
+      templateUrl: 'app/audit/auditList.html',
+      controller: 'AuditsListController',
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
     });
   $urlRouterProvider.otherwise('/');
 }

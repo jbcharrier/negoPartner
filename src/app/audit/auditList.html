@@ -1,0 +1,54 @@
+<md-content class="auditsList" layout="column">
+  <section layout>
+    <md-card layout="column" flex="90">
+      <md-table-container>
+        <table md-table>
+          <thead md-head>
+          <tr md-row>
+            <th md-column>Création de l'opération</th>
+            <th md-column>Nom de l'opération</th>
+            <th md-column>Début</th>
+            <th md-column>Fin</th>
+            <th md-column>Fréquence de l'opération</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody md-body>
+          <tr md-row ng-repeat="operation in operations">
+            <td md-cell>{{operation.creationDate | date:'dd/MM/yyyy'}}</td>
+            <td md-cell>{{operation.name}}</td>
+            <td md-cell>{{operation.startDate | date:'dd/MM/yyyy'}}</td>
+            <td md-cell>{{operation.endDate | date:'dd/MM/yyyy'}}</td>
+            <td md-cell>{{operation.frequency}}</td>
+            <td md-cell class="align-right">
+              <md-button class="md-icon-button md-primary" ng-click="delete(operation.id)">
+                <md-icon class="material-icons themeBlue">delete</md-icon>
+                <md-tooltip md-direction="right">
+                  Supprimer
+                </md-tooltip>
+              </md-button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </md-table-container>
+    </md-card>
+    <section flex>
+      <md-button class="md-fab md-mini" aria-label="FAB" style="margin-top: 20px"
+                 ui-sref="operationCreate">
+        <md-icon class="material-icons">add</md-icon>
+        <md-tooltip md-direction="top">
+          Ajouter une opération
+        </md-tooltip>
+      </md-button>
+    </section>
+  </section>
+  <section layout layout-align="center center">
+    <div flex="20">
+      <md-button class="md-primary md-raised"
+                 ui-sref="areasList">
+        <span>Retour aux espaces</span>
+      </md-button>
+    </div>
+  </section>
+</md-content>
