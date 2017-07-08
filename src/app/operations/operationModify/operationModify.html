@@ -1,0 +1,37 @@
+<md-content class="operationModify" layout="row" layout-align="center center">
+  <div flex-gt-md="40" flex-gt-sm="60" flex="80">
+    <h3 class="text-center">Modifier l'opération</h3>
+    <form name="operationForm" ng-submit="modifyOperation(operation)" layout="column">
+
+      <section>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Nom de l'opération*</label>
+          <input ng-model="operation.name" required>
+        </md-input-container>
+      </section>
+
+      <md-input-container>
+        <label>Fréquence</label>
+        <md-select ng-model="operation.frequency" required>
+          <md-option><em></em></md-option>
+          <md-option ng-repeat="frequency in frequencies" ng-value="frequency">
+            {{frequency}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container class="md-block" style="margin-top: 10%">
+        <label>Complément</label>
+        <textarea ng-model="operation.complement" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <section style="margin-top: 5%" layout>
+        <span flex></span>
+        <div class="text-right" layout layout-align="end center">
+          <md-button class="md-raised md-primary" type="submit">Sauvegarder</md-button>
+        </div>
+      </section>
+
+    </form>
+  </div>
+</md-content>

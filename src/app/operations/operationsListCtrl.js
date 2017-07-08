@@ -2,6 +2,9 @@ export class OperationsListController {
   constructor ($scope, $state, $stateParams, Account) {
     'ngInject';
   
+    if(sessionStorage.getItem("operationId")){
+      sessionStorage.removeItem("operationId")
+    }
     if(sessionStorage.getItem("accountId") && sessionStorage.getItem("siteId") && sessionStorage.getItem("areaId")) {
       $scope.accountId = sessionStorage.getItem("accountId");
       $scope.siteId = sessionStorage.getItem("siteId");

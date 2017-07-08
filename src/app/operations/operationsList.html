@@ -11,6 +11,7 @@
               <th md-column>Fin</th>
               <th md-column>Fréquence de l'opération</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody md-body>
@@ -27,6 +28,16 @@
                   Supprimer
                 </md-tooltip>
               </md-button>
+            </td>
+            <td md-cell>
+              <a ui-sref="operationModify({operationId: operation.id})">
+                <md-button class="md-icon-button md-primary">
+                  <md-icon class="material-icons themeBlue">create</md-icon>
+                  <md-tooltip md-direction="right">
+                    Modifier
+                  </md-tooltip>
+                </md-button>
+              </a>
             </td>
           </tr>
           </tbody>

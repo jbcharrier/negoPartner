@@ -225,6 +225,28 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('operationModify', {
+      url: '/operation-modify',
+      templateUrl: 'app/operations/operationModify/operationModify.html',
+      controller: 'OperationModifyController',
+      params:{
+        accountId: null,
+        siteId: null,
+        areaId: null,
+        operationId: null,
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
+    })
     .state('areaType', {
       url: '/area-type',
       templateUrl: 'app/areaType/areaType.html',

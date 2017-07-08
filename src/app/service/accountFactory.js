@@ -170,6 +170,23 @@ export class AccountFactory {
     return defer.promise;
   }
   
+  getOperation (accountId, siteId, areaId, operationId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).child('operations').child(operationId).once('value').then(function (data) {
+      let operationsList = data.val();
+      defer.resolve(operationsList);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
+  modifyOperation (accountId, siteId, areaId, operationId, operationModified) {
+    this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).child('operations').child(operationId).update(operationModified).then(function (data) {
+      data.update({id:data.key});
+    })
+  }
+
   saveOperation (accountId, siteId, areaId, operation) {
     this.firebase.database().ref('account').child(accountId).child('sites').child(siteId).child('areas').child(areaId).child('operations').push(operation).then(function (data) {
       data.update({id:data.key});

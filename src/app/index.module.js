@@ -33,6 +33,7 @@ import { AuditFrequencyService } from '../app/service/frequency/auditFrequencySe
 import { AuditsListController } from '../app/audit/auditListCtrl';
 import { AuditFactory } from '../app/service/auditFactory';
 import { OperationFromAreaTypeController } from '../app/operations/operationCreate/operationFromAreaType/operationFromAreaTypeCtrl';
+import { OperationModifyController } from '../app/operations/operationModify/operationModifyCtrl';
 
 
 
@@ -72,4 +73,5 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .controller('AreaTypeListController', AreaTypeListController)
   .controller('AuditsListController', AuditsListController)
   .controller('OperationFromAreaTypeController', OperationFromAreaTypeController)
+  .controller('OperationModifyController', OperationModifyController)
   .directive('navbar', NavbarDirective);
