@@ -16,6 +16,17 @@ export class AreaTypeFactory {
     return this.areaType;
   }
   
+  getAreaType (areaTypeId) {
+    let defer = this.$q.defer();
+    this.firebase.database().ref('areas').child(areaTypeId).once('value').then(function (data) {
+      let areaTypeList = data.val();
+      defer.resolve(areaTypeList);
+    }, function (error) {
+      defer.reject(error);
+    });
+    return defer.promise;
+  }
+  
   getAreaTypeList () {
     let defer = this.$q.defer();
     this.firebase.database().ref('areas').once('value').then(function (data) {
@@ -33,6 +44,10 @@ export class AreaTypeFactory {
       operations: {}
     };
     this.get();
+  }
+  
+  modifyAreaType (areaTypeId, areaTypeModified) {
+    this.firebase.database().ref('areas').child(areaTypeId).update(areaTypeModified);
   }
   
   saveAreaType (areaType) {

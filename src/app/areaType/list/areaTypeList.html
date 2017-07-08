@@ -8,6 +8,7 @@
             <th md-column><span>Espace Type</span></th>
             <th md-column>Opérations</th>
             <th md-column></th>
+            <th md-column></th>
           </tr>
           </thead>
           <tbody md-body>
@@ -27,6 +28,16 @@
                   Supprimer
                 </md-tooltip>
               </md-button>
+            </td>
+            <td md-cell>
+              <a ui-sref="areaTypeModify({areaTypeId: areaType.id})">
+                <md-button class="md-icon-button md-primary">
+                  <md-icon class="material-icons themeBlue">create</md-icon>
+                  <md-tooltip md-direction="right">
+                    Modifier
+                  </md-tooltip>
+                </md-button>
+              </a>
             </td>
           </tr>
           </tbody>

@@ -279,6 +279,25 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('areaTypeModify', {
+      url: '/area-type-modify',
+      templateUrl: 'app/areaType/modify/areaTypeModify.html',
+      controller: 'AreaTypeModifyController',
+      params:{
+        areaTypeId: null,
+      },
+      resolve: {
+        "check": function(Auth, $state){
+          if(sessionStorage.getItem('access')){
+            console.log("Auth Permission OK session")
+          } else if(Auth.checkPermission()){
+            console.log("Auth Permission OK")
+          } else {
+            $state.path('login');
+          }
+        }
+      }
+    })
     .state('userCreate', {
       url: '/user/:accountId',
       templateUrl: 'app/user/userCreate.html',

@@ -34,8 +34,7 @@ import { AuditsListController } from '../app/audit/auditListCtrl';
 import { AuditFactory } from '../app/service/auditFactory';
 import { OperationFromAreaTypeController } from '../app/operations/operationCreate/operationFromAreaType/operationFromAreaTypeCtrl';
 import { OperationModifyController } from '../app/operations/operationModify/operationModifyCtrl';
-
-
+import { AreaTypeModifyController } from '../app/areaType/modify/areaTypeModifyCtrl';
 
 
 angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages', 'md.data.table'])
@@ -74,4 +73,5 @@ angular.module('negoPartner', ['ngAnimate', 'ngResource', 'ui.router', 'ngMateri
   .controller('AuditsListController', AuditsListController)
   .controller('OperationFromAreaTypeController', OperationFromAreaTypeController)
   .controller('OperationModifyController', OperationModifyController)
+  .controller('AreaTypeModifyController', AreaTypeModifyController)
   .directive('navbar', NavbarDirective);
